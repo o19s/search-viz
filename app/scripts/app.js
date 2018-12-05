@@ -10,6 +10,7 @@
  */
 angular
   .module('searchVizApp', [
+    'chart.js',
     'ngAnimate',
     'ngCookies',
     'ngResource',

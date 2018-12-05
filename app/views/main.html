@@ -7,10 +7,20 @@
   <h2>Search for a Movie</h2>
 </center>
 
-<ul class="search-results">
-  <li ng-repeat="doc in docs">
-    <b>{{doc.title}}</b> ({{ doc.release_date | date: 'yyyy' }})<br/>
-    <i>{{doc.tagline}}</i>
-    <p>{{doc.overview}}</p>
-  </li>
-</ul>
+<div class="row details" ng-if="docs.length > 0">
+  <!-- Results column -->
+  <div class="col-md-6">
+    <ul class="search-results">
+      <li ng-repeat="doc in docs">
+        <b>{{doc.title}}</b> ({{ doc.release_date | date: 'yyyy' }})<br/>
+        <i>{{doc.tagline}}</i>
+        <p>{{doc.overview}}</p>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Viz column -->
+  <div class="col-md-6">
+    <h2>Coming soon</h2>
+  </div>
+</div>
