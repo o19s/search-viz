@@ -12,6 +12,7 @@ angular.module('searchVizApp')
     $scope.docs = [];
 
     $scope.genreBar = {};
+    $scope.movieDates = {};
 
     $scope.submitSearch = function() {
       var query = $scope.queryText;
@@ -21,6 +22,7 @@ angular.module('searchVizApp')
           $scope.docs = data['response']['docs'];
 
           $scope.setupGenreBars(data);
+          $scope.setupMovieDates(data);
         },
         function() {
           // Don't care for this app
@@ -33,10 +35,20 @@ angular.module('searchVizApp')
       $scope.genreBar.labels = [];
       $scope.genreBar.data = [];
 
-      // Graphs in chartjs need data/series/labels
       angular.forEach(data['facet_counts']['facet_fields']['genres'], function(count, genre) {
         $scope.genreBar.labels.push(genre);
         $scope.genreBar.data.push(count);
+      });
+    };
+
+    // Movie date setup
+    $scope.setupMovieDates = function(data) {
+      $scope.movieDates.labels = [];
+      $scope.movieDates.data = [];
+
+      angular.forEach(data['facet_counts']['facet_ranges']['release_date']['counts'], function(count, date) {
+        $scope.movieDates.labels.push(date.substring(0, 4));
+        $scope.movieDates.data.push(count);
       });
     };
   }]);
