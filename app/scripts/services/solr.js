@@ -16,8 +16,12 @@ angular.module('searchVizApp')
     factory.search = function(query) {
       var deferred = $q.defer();
 
+      var qf = "title cast tagline overview directors";
+
       var params = {
+        'defType': 'edismax',
         'q': query,
+        'qf': qf,
         'rows': 25,
         'wt': 'json'
       };
