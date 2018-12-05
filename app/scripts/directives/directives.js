@@ -5,9 +5,13 @@
 angular.module('searchVizApp')
   .directive('onEnter', function() {
     return function(scope, element, attrs) {
-      element.bind('keydown keypress', function(event) {
+      element.bind('keyup', function(event) {
         if (event.which === 13) {
-          scope.$eval(attrs.onEnter);
+          scope.$apply(function() {
+            scope.$eval(attrs.onEnter);
+          });
+
+          event.preventDefault();
         }
       });
     };

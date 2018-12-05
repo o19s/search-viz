@@ -20,6 +20,11 @@ angular.module('searchVizApp')
 
       var params = {
         'defType': 'edismax',
+        'facet': 'true',
+        'facet.field': 'genres',
+        'facet.limit': 5,
+        'facet.mincount': 1,
+        'json.nl': 'map',
         'q': query,
         'qf': qf,
         'rows': 25,
