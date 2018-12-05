@@ -24,7 +24,7 @@ angular.module('searchVizApp')
         'facet.field': 'genres',
         'facet.range': 'release_date',
         'facet.range.start': '1980-01-01T00:00:00Z',
-        'facet.range.end': 'NOW/YEAR',
+        'facet.range.end': '2014-01-01T00:00:00Z',
         'facet.range.gap': '+1YEAR',
         'facet.limit': 5,
         'facet.mincount': 1,

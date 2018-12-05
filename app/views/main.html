@@ -21,6 +21,14 @@
 
   <!-- Viz column -->
   <div class="col-md-6">
+    <div ng-repeat="val in boosts">
+      <input type="range" ng-change="updateBoosts()" ng-model="val.boost" name="{{val.label}}" min="1" max="10" value="1">
+      <label for="{{val.label}}">{{val.label}}</label>
+    </div>
+    <canvas class="chart chart-radar"
+      chart-data="radar.data" chart-labels="radar.labels" chart-options="radarOptions">
+    </canvas>
+
     <canvas class="chart chart-bar"
       chart-data="genreBar.data" chart-labels="genreBar.labels">
     </canvas>
