@@ -1,1 +1,16 @@
-<h1>Coming Soon</h1>
+<center>
+<input type="text" on-enter="submitSearch()" class="query-box" ng-model="queryText" />
+<button ng-click="submitSearch()">Search</button>
+</center>
+
+<center ng-if="docs.length == 0">
+  <h2>Search for a Movie</h2>
+</center>
+
+<ul class="search-results">
+  <li ng-repeat="doc in docs">
+    <b>{{doc.title}}</b> ({{ doc.release_date | date: 'yyyy' }})<br/>
+    <i>{{doc.tagline}}</i>
+    <p>{{doc.overview}}</p>
+  </li>
+</ul>

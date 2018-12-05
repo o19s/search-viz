@@ -8,10 +8,19 @@
  * Controller of the searchVizApp
  */
 angular.module('searchVizApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('MainCtrl', ['$scope', 'solr', function ($scope, solr) {
+    $scope.docs = [];
+
+    $scope.submitSearch = function() {
+      var query = $scope.queryText;
+
+      solr.search(query).then(
+        function(data) {
+          $scope.docs = data['response']['docs'];
+        },
+        function() {
+          // Don't care for this app
+        });
+    };
+    
+  }]);
