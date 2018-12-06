@@ -2,10 +2,10 @@
 
 /**
  * @ngdoc function
- * @name searchVizApp.controller:MainCtrl
+ * @name searchVizApp.service:solr
  * @description
  * # MainCtrl
- * Controller of the searchVizApp
+ * Search service to retreieve solr results
  */
 angular.module('searchVizApp')
   .service('solr', ['$q', '$http', function ($q, $http) {
@@ -13,13 +13,22 @@ angular.module('searchVizApp')
 
     var SOLR_EP = 'http://solr.quepid.com/solr/tmdb/select?';
 
-    factory.search = function(query) {
+    factory.search = function(query, boosts) {
       var deferred = $q.defer();
+
+      query = query || '*';
+
+      var bqs = [];
+      angular.forEach(boosts, function(boost) {
+        var bq = 'genres:"' + boost.label + '"^' + boost.boost;
+        bqs.push(bq);
+      });
 
       var qf = "title cast tagline overview directors";
 
       var params = {
         'defType': 'edismax',
+        'bq': bqs,
         'facet': 'true',
         'facet.field': 'genres',
         'facet.range': 'release_date',
@@ -38,7 +47,6 @@ angular.module('searchVizApp')
 
       $http.get(SOLR_EP, {params: params})
         .then(function(data) {
-          console.log(data.data);
           deferred.resolve(data.data);
         }, function() {
           deferred.reject();

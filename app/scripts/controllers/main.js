@@ -13,11 +13,11 @@ angular.module('searchVizApp')
 
     // Boosts
     $scope.boosts = [
-      {label: 'action', boost: 5},
-      {label: 'comedy', boost: 5},
-      {label: 'romance', boost: 5},
-      {label: 'horror', boost: 5},
-      {label: 'drama', boost: 5}
+      {label: 'Action', boost: 5},
+      {label: 'Comedy', boost: 5},
+      {label: 'Romance', boost: 5},
+      {label: 'Horror', boost: 5},
+      {label: 'Drama', boost: 5}
     ];
 
     // Graph data variables
@@ -38,7 +38,7 @@ angular.module('searchVizApp')
     $scope.submitSearch = function() {
       var query = $scope.queryText;
 
-      solr.search(query).then(
+      solr.search(query, $scope.boosts).then(
         function(data) {
           $scope.docs = data['response']['docs'];
 
@@ -82,5 +82,11 @@ angular.module('searchVizApp')
         $scope.radar.labels.push(boost.label);
         $scope.radar.data.push(boost.boost);
       });
+
+      $scope.submitSearch();
     };
+
+
+    // Page load calls
+    $scope.updateBoosts();
   }]);
