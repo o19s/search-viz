@@ -10,6 +10,7 @@ Run `grunt` for building and `grunt serve` for preview.
 ## To run in docker
 `
 docker build -t search-viz .
+
 docker run -d -p 8080:80 --name=search-viz search-viz
 `
 
