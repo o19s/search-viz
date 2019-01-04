@@ -11,7 +11,7 @@ angular.module('searchVizApp')
   .service('solr', ['$q', '$http', function ($q, $http) {
     var factory = {};
 
-    var SOLR_EP = 'http://solr.quepid.com/solr/tmdb/select?';
+    var SOLR_EP = 'http://quepid-solr.dev.o19s.com/solr/tmdb/select?';
 
     factory.search = function(query, boosts) {
       var deferred = $q.defer();
