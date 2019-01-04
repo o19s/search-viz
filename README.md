@@ -14,6 +14,10 @@ Run `grunt` for building and `grunt serve` for preview.
 
 or just run `run-it.sh`
 
+## To deploy on digital ocean
+Login to harbor.dev.o19s.com (insecure registry setting may need to be set)
+`docker-compose up -d -f docker-compose.digitalocean.yml`
+
 ## Testing
 
 Running `grunt test` will run the unit tests with karma.
