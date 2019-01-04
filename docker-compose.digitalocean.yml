@@ -8,4 +8,4 @@
   frontend:
     image: harbor.dev.o19s.com/search-viz/app:latest
     ports:
-     - "8080:80"
+     - "81:80"
