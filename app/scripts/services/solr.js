@@ -24,8 +24,8 @@ angular.module('searchVizApp')
         bqs.push(bq);
       });
 
-      var qf = "title^6 cast tagline overview^3 directors";
-      var pf = "title^10 overview^3";
+      var qf = "title^6 cast tagline overview^2 directors";
+      var pf = "title^10 overview^2";
 
       var params = {
         'defType': 'edismax',
