@@ -1,3 +1,4 @@
+/*jshint sub:true*/
 'use strict';
 
 /**
@@ -29,7 +30,7 @@ angular.module('searchVizApp')
       scale: {
         ticks: {
           beginAtZero: true,
-          stepSize: 2, 
+          stepSize: 2,
           max: 10
         }
       }
@@ -49,14 +50,14 @@ angular.module('searchVizApp')
           // Don't care for this app
         });
     };
-    
+
 
     // Genre bar graph setup
     $scope.setupGenreBars = function(data) {
       $scope.genreBar.labels = [];
       $scope.genreBar.data = [];
 
-      angular.forEach(data['facet_counts']['facet_fields']['genres'], function(count, genre) {
+      angular.forEach(data['facet_counts']['facet_fields']['genres_str'], function(count, genre) {
         $scope.genreBar.labels.push(genre);
         $scope.genreBar.data.push(count);
       });

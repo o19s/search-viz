@@ -12,9 +12,9 @@
   <div class="col-md-6">
     <ul class="search-results">
       <li ng-repeat="doc in docs">
-        <b>{{doc.title}}</b> ({{ doc.release_date | date: 'yyyy' }})<br/>
-        <i>{{doc.tagline}}</i>
-        <p>{{doc.overview}}</p>
+        <b>{{doc.title[0]}}</b> ({{ doc.release_date | date: 'yyyy' }})<br/>
+        <i>{{doc.tagline[0]}}</i>
+        <p>{{doc.overview[0]}}</p>
       </li>
     </ul>
   </div>

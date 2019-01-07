@@ -24,13 +24,14 @@ angular.module('searchVizApp')
         bqs.push(bq);
       });
 
-      var qf = "title cast tagline overview directors";
+      var qf = "title^6 cast tagline overview^3 directors";
+      var pf = "title^10 overview^3";
 
       var params = {
         'defType': 'edismax',
         'bq': bqs,
         'facet': 'true',
-        'facet.field': 'genres',
+        'facet.field': 'genres_str',
         'facet.range': 'release_date',
         'facet.range.start': '1980-01-01T00:00:00Z',
         'facet.range.end': '2014-01-01T00:00:00Z',
@@ -41,6 +42,7 @@ angular.module('searchVizApp')
         'json.nl': 'map',
         'q': query,
         'qf': qf,
+        'pf': pf,
         'rows': 25,
         'wt': 'json'
       };
