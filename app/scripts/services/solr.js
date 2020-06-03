@@ -41,6 +41,7 @@ angular.module('searchVizApp')
         'f.release_date.facet.mincount': 0,
         'json.nl': 'map',
         'q': query,
+        'q.op': 'AND',
         'qf': qf,
         'pf': pf,
         'rows': 25,

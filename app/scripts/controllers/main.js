@@ -11,6 +11,7 @@
 angular.module('searchVizApp')
   .controller('MainCtrl', ['$scope', 'solr', function ($scope, solr) {
     $scope.docs = [];
+    $scope.queryText = '';
 
     // Boosts
     $scope.boosts = [
@@ -56,6 +57,14 @@ angular.module('searchVizApp')
     $scope.setupGenreBars = function(data) {
       $scope.genreBar.labels = [];
       $scope.genreBar.data = [];
+
+      $scope.genreBar.options = {
+        onClick: function(e, chart) {
+          $scope.queryText += " genres:" + chart[0]._model.label;
+          $scope.queryText = $scope.queryText.trim();
+          $scope.submitSearch();
+        }
+      };
 
       angular.forEach(data['facet_counts']['facet_fields']['genres_str'], function(count, genre) {
         $scope.genreBar.labels.push(genre);
