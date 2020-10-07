@@ -66,7 +66,7 @@ angular.module('searchVizApp')
         }
       };
 
-      angular.forEach(data['facet_counts']['facet_fields']['genres_str'], function(count, genre) {
+      angular.forEach(data['facet_counts']['facet_fields']['genres_s'], function(count, genre) {
         $scope.genreBar.labels.push(genre);
         $scope.genreBar.data.push(count);
       });

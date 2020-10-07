@@ -31,7 +31,7 @@ angular.module('searchVizApp')
         'defType': 'edismax',
         'bq': bqs,
         'facet': 'true',
-        'facet.field': 'genres_str',
+        'facet.field': 'genres_s',
         'facet.range': 'release_date',
         'facet.range.start': '1980-01-01T00:00:00Z',
         'facet.range.end': '2014-01-01T00:00:00Z',
